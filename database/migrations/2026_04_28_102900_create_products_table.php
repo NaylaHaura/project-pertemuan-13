@@ -9,12 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up(): void
-{
-    Schema::table('products', function (Blueprint $table) {
-        $table->string('link_eksternal')->nullable();
-    });
-}
+  public function up(): void
+    {
+        // Ubah 'table' menjadi 'create'
+        Schema::create('products', function (Blueprint $table) {
+            $table->id(); // Jangan lupa tambahkan ID
+            $table->string('name'); // Tambahkan kolom-kolom yang kamu perlukan
+            $table->string('link_eksternal')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
