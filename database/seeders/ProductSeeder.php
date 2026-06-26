@@ -10,9 +10,9 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         DB::table('products')->insert([
-            ['Youthera' => 'House Brands', 'link_eksternal' => 'https://tokopedia.com', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Produk B', 'link_eksternal' => 'https://shopee.com', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Produk C', 'link_eksternal' => 'https://lazada.com', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Youthera', 'link_eksternal' => 'https://tokopedia.com', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Theraskin', 'link_eksternal' => 'https://shopee.com', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'L\'Essential', 'link_eksternal' => 'https://lazada.com', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
