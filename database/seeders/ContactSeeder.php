@@ -5,26 +5,14 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ContactSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
-    public function run(): void 
+    public function run(): void
     {
-        DB::table('contacts')->insert([
-            [
-                'label' => 'Kantor Pusat',
-                'value' => 'Taman Tekno Sektor XI Blok G1 No. 1, Tangerang Selatan',
-                'icon'  => 'bi-geo-alt',
-            ],
-            [
-                'label' => 'WhatsApp',
-                'value' => '0812-3456-7890',
-                'icon'  => 'bi-whatsapp',
-            ],
-            [
-                'label' => 'Email',
-                'value' => 'info@l-essential.co.id',
-                'icon'  => 'bi-envelope',
-            ],
+        DB::table('products')->insert([
+            ['nama_produk' => 'Youthera', 'kategori' => 'Skincare', 'deskripsi' => 'Produk skincare premium dari PT L\'Essential.', 'gambar' => 'default.jpg', 'link_eksternal' => 'https://tokopedia.com', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_produk' => 'Theraskin', 'kategori' => 'Skincare', 'deskripsi' => 'Produk perawatan kulit berstandar dokter.', 'gambar' => 'default.jpg', 'link_eksternal' => 'https://shopee.com', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_produk' => 'L\'Essential', 'kategori' => 'Kosmetik', 'deskripsi' => 'Kosmetik halal berstandar BPOM.', 'gambar' => 'default.jpg', 'link_eksternal' => 'https://lazada.com', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
