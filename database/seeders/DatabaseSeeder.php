@@ -13,9 +13,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'test@example.com'],
-            ['name' => 'Test User']
-        );
+    ['email' => 'test@example.com'],
+    [
+        'name' => 'Test User',
+        'password' => \Illuminate\Support\Facades\Hash::make('password'),
+    ]
+);
 
         $this->call([
             AdminUserSeeder::class,
@@ -24,6 +27,7 @@ class DatabaseSeeder extends Seeder
             ArtikelSeeder::class,
             ServiceSeeder::class,
             GaleriSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }
