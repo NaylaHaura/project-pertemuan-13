@@ -2,14 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/login',[AuthController::class,'index'])->name('login');
-Route::post('/login',[AuthController::class,'login']);
-Route::get('/logout',[AuthController::class,'logout']);
+class AuthController extends Controller
+{
+    public function index()
+    {
+        return view('admin.login');
+    }
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/dashboard',
-        [AdminController::class,'dashboard']);
-});
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($request->only('email','password'))) {
+            $request->session()->regenerate();
+            return redirect('/admin/dashboard');
+        }
+
+        return back()->with('error','Email atau Password salah');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
+}
